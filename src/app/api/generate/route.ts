@@ -66,11 +66,11 @@ const genPromptT = (context:string) => {
     if (!GROQ_API_KEY) {
       return NextResponse.json({status:500, message: "GROQ_API_KEY not found" });
     }
-    
+
     const { data } = await request.json();
   
     const prompt = genPromptT(JSON.stringify(data));
-    console.log('Generated prompt:', prompt);
+    // console.log('Generated prompt:', prompt);
     const result = await main(prompt);
   
     return NextResponse.json({ "result": result });
