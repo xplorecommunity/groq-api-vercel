@@ -71,6 +71,7 @@ const genPromptT = async(context:string) => {
     const { data ,result} = body;
     console.log(data,result)
     if (result){
+    console.log("Inside Result")
     const rprompt = await genPromptT(JSON.stringify(result));
     // console.log('Generated prompt:', prompt);
     const rresult = await main(rprompt);
