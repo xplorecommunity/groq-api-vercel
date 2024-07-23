@@ -64,7 +64,7 @@ Guidelines:
 Output Format:
 - List all takeaways as numbered bullet points
 - If applicable, use subheadings to organize takeaways by content sections
-- Ensure each takeaway is a complete thought, even if brief
+- Ensure each takeaway is a CRISP & SHORT thought.
 
 Additional Notes:
 - Generate as many takeaways as needed to cover all important points
@@ -74,7 +74,7 @@ Additional Notes:
 - Focus on facts, insights, and actionable information
 - Include relevant statistics or data points if present in the content
 
-Aim to create a comprehensive list of takeaways that could serve as a detailed summary of the entire content.
+Aim to create a comprehensive list of takeaways that could serve as a CRISP summary of the entire content.
 `;
 };
 
