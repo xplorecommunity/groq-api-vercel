@@ -68,12 +68,21 @@ const genPromptT = (context:string) => {
     }
 
     const { data } = await request.json();
+    const { result } = await request.json();
+
+    if (result){
+    const rprompt = genPromptT(JSON.stringify(result));
+    // console.log('Generated prompt:', prompt);
+    const rresult = await main(rprompt);
+  
+    return NextResponse.json({ "result": rresult });
+    }
   
     const prompt = genPromptT(JSON.stringify(data));
     // console.log('Generated prompt:', prompt);
-    const result = await main(prompt);
+    const dresult = await main(prompt);
   
-    return NextResponse.json({ "result": result });
+    return NextResponse.json({ "result": dresult });
   }
 
 
