@@ -4,7 +4,7 @@ import { config } from 'dotenv';
 
 config();
 
-const genPromptT = (context:string) => {
+const genPromptT = async(context:string) => {
     return `
       You are a Content Takeaway Bot.
   
@@ -68,17 +68,17 @@ const genPromptT = (context:string) => {
     }
 
     const body = await request.json();
-    console.log(body)
     const { data ,result} = body;
+    console.log(data,result)
     if (result){
-    const rprompt = genPromptT(JSON.stringify(result));
+    const rprompt = await genPromptT(JSON.stringify(result));
     // console.log('Generated prompt:', prompt);
     const rresult = await main(rprompt);
   
     return NextResponse.json({ "result": rresult });
     }
   
-    const prompt = genPromptT(JSON.stringify(data));
+    const prompt = await genPromptT(JSON.stringify(data));
     // console.log('Generated prompt:', prompt);
     const dresult = await main(prompt);
   
