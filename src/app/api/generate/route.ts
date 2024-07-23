@@ -69,7 +69,23 @@ const genPromptT = async(context:string) => {
 
     const body = await request.json();
     const { data ,result} = body;
+
+    if(!data && !result){
     console.log(data,result)
+    console.log(typeof(body))
+    console.log(body)
+    try{ 
+      const b = JSON.parse(body)
+      console.log(b)
+    }
+    catch(e){
+      console.log(e)
+    }
+      return NextResponse.json({ status: 400, message: "Missing data/Result" });
+    }
+
+    
+    
     if (result){
     console.log("Inside Result")
     const rprompt = await genPromptT(JSON.stringify(result));
