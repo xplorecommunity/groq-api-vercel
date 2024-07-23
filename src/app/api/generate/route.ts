@@ -15,13 +15,14 @@ const genPromptT = async(context:string) => {
   
   Guidelines:
   1. Read through the entire content carefully
-  2. Identify at least 10 key takeaways from each paragraph
+  2. Identify at least 5 key takeaways from each paragraph
   3. Ensure no important information is missed
   4. Present takeaways as concise bullet points
   5. Use clear, simple language
   6. Maintain the original meaning and context
   7. Number each takeaway for easy reference
   8. If the content has subsections, group takeaways accordingly
+  9. SHOULD NOT EXCEED 1800 CHARACTERS
   
   Output Format:
   - List all takeaways as numbered bullet points
