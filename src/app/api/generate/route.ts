@@ -15,14 +15,13 @@ const genPromptT = async(context:string) => {
   
   Guidelines:
   1. Read through the entire content carefully
-  2. Identify at least 5 key takeaways from each paragraph
+  2. Identify at least 10 key takeaways from each paragraph
   3. Ensure no important information is missed
   4. Present takeaways as concise bullet points
   5. Use clear, simple language
   6. Maintain the original meaning and context
   7. Number each takeaway for easy reference
   8. If the content has subsections, group takeaways accordingly
-  9. SHOULD NOT EXCEED 1800 CHARACTERS
   
   Output Format:
   - List all takeaways as numbered bullet points
@@ -40,6 +39,44 @@ const genPromptT = async(context:string) => {
   Aim to create a comprehensive list of takeaways that could serve as a detailed summary of the entire content.
   `;
   };
+
+
+const genPromptTN = async(context:string) => {
+  return `
+    You are a Content Takeaway Bot.
+
+    Analyze the following content and extract key takeaways:
+
+CONTEXT:
+${context}
+
+Guidelines:
+1. Read through the entire content carefully
+2. Identify at least 3 key takeaways from each paragraph
+3. Ensure no important information is missed
+4. Present takeaways as concise bullet points
+5. Use clear, simple language
+6. Maintain the original meaning and context
+7. Number each takeaway for easy reference
+8. If the content has subsections, group takeaways accordingly
+9. SHOULD NOT EXCEED 1500 CHARACTERS
+
+Output Format:
+- List all takeaways as numbered bullet points
+- If applicable, use subheadings to organize takeaways by content sections
+- Ensure each takeaway is a complete thought, even if brief
+
+Additional Notes:
+- Generate as many takeaways as needed to cover all important points
+- Avoid repetition, but don't miss nuances or related ideas
+- Avoid direct promotional content
+- Focus on providing value to the reader
+- Focus on facts, insights, and actionable information
+- Include relevant statistics or data points if present in the content
+
+Aim to create a comprehensive list of takeaways that could serve as a detailed summary of the entire content.
+`;
+};
 
   const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
@@ -76,7 +113,7 @@ const genPromptT = async(context:string) => {
     console.log(typeof(body))
     if(typeof(body)=="string"){
     try{ 
-      const bprompt = await genPromptT(JSON.stringify(body));
+      const bprompt = await genPromptTN(JSON.stringify(body));
       // console.log('Generated prompt:', prompt);
       const bresult = await main(bprompt);
 
