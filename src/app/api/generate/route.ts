@@ -52,7 +52,7 @@ ${context}
 
 Guidelines:
 1. Read through the entire content carefully
-2. Identify at max 3 key takeaways from each paragraph
+2. Identify at max 1 key takeaways from each paragraph
 3. Ensure no important information is missed
 4. Present takeaways as concise bullet points, short and crisp
 5. Use clear, simple language
@@ -67,14 +67,14 @@ Output Format:
 - Ensure each takeaway is a CRISP & SHORT thought.
 
 Additional Notes:
-- Generate as many takeaways as needed to cover all important points
+- Generate short takeaways as needed to cover all important points
 - Avoid repetition, but don't miss nuances or related ideas
 - Avoid direct promotional content
 - Focus on providing value to the reader
 - Focus on facts, insights, and actionable information
 - Include relevant statistics or data points if present in the content
 
-Aim to create a comprehensive list of takeaways that could serve as a CRISP summary of the entire content.
+Aim to create a short list of takeaways that could serve as a CRISP summary of the entire content.
 `;
 };
 
