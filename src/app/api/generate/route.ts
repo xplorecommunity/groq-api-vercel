@@ -73,14 +73,20 @@ const genPromptT = async(context:string) => {
     if(!data && !result){
     console.log(data,result)
     console.log(typeof(body))
-    console.log(body)
+    if(typeof(body)=="string"){
     try{ 
-      const b = JSON.parse(body)
-      console.log(b)
+      const bprompt = await genPromptT(JSON.stringify(body));
+      // console.log('Generated prompt:', prompt);
+      const bresult = await main(bprompt);
+
+      return NextResponse.json({ "result": bresult });
     }
     catch(e){
       console.log(e)
     }
+      
+    }
+    console.log(body)
       return NextResponse.json({ status: 400, message: "Missing data/Result" });
     }
 
