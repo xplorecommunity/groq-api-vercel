@@ -52,11 +52,11 @@ ${context}
 
 Guidelines:
 1. Read through the entire content carefully
-2. Identify at least 3 key takeaways from each paragraph
+2. Identify at max 3 key takeaways from each paragraph
 3. Ensure no important information is missed
-4. Present takeaways as concise bullet points
+4. Present takeaways as concise bullet points, short and crisp
 5. Use clear, simple language
-6. Maintain the original meaning and context
+6. Maintain the original meaning and short context
 7. Number each takeaway for easy reference
 8. If the content has subsections, group takeaways accordingly
 9. SHOULD NOT EXCEED 1500 CHARACTERS
