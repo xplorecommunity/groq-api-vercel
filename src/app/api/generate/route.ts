@@ -52,29 +52,26 @@ ${context}
 
 Guidelines:
 1. Read through the entire content carefully
-2. Identify at max 1 key takeaways from each paragraph
+2. Summarize into one sentence from each paragraph
 3. Ensure no important information is missed
-4. Present takeaways as concise bullet points, short and crisp
+4. Present the one sentence summary short and crisp
 5. Use clear, simple language
 6. Maintain the original meaning and short context
-7. Number each takeaway for easy reference
-8. If the content has subsections, group takeaways accordingly
-9. SHOULD NOT EXCEED 1500 CHARACTERS
+8. SHOULD NOT EXCEED 1500 CHARACTERS
 
 Output Format:
-- List all takeaways as numbered bullet points
-- If applicable, use subheadings to organize takeaways by content sections
-- Ensure each takeaway is a CRISP & SHORT thought.
+- If applicable, use subheadings to organize one sentence summaries by content sections
+- Ensure each summary is a CRISP & SHORT thought.
 
 Additional Notes:
-- Generate short takeaways as needed to cover all important points
+- Generate short one/two sentence summaries as needed to cover all important points
 - Avoid repetition, but don't miss nuances or related ideas
 - Avoid direct promotional content
 - Focus on providing value to the reader
 - Focus on facts, insights, and actionable information
 - Include relevant statistics or data points if present in the content
 
-Aim to create a short list of takeaways that could serve as a CRISP summary of the entire content.
+Aim to create a short list of one sentence summaries that could serve as a CRISP summary of the entire content.
 `;
 };
 
