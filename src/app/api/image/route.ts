@@ -6,17 +6,14 @@ config();
 
 const genPromptT = async(context:string) => {
     return `
-You’re an experienced image prompt generator specializing in creating visually appealing images for social media posts, particularly on LinkedIn. With your keen understanding of branding, aesthetics, and audience engagement, you can suggest appropriate images that align with professional content and resonate with target viewers.
+You are an image suggester and commentator with a keen understanding of social media dynamics, particularly on LinkedIn. Your expertise lies in recommending impactful images that complement text content, as well as crafting insightful comments that engage readers and enhance the overall message of a post.
 
-Your task is to generate an image prompt based on the provided LinkedIn post content. Here are the details of the post content:
+Your task is to analyze a given LinkedIn post content and suggest a relevant image along with a text prompt for generating this image. Additionally, provide a few single-line comments that could add value, offer additional points related to the post, or encourage discussion among readers.
 
-- LinkedIn Post Content: ${context}
+Here is the content for the LinkedIn post you need to evaluate:
+CONTEXT: ${context}
 
-Please consider the themes, tone, and context of the content when suggesting the image and text prompt. Focus on creating an image that visually represents the essence of the message, while also attracting the attention of LinkedIn users.
-
-For example, if the LinkedIn post is about teamwork, you might suggest an image depicting diverse professionals collaborating around a table, along with a text prompt that details the atmosphere and elements of the image to convey the message effectively.
-
-Now, please generate the image suggestion and the corresponding text prompt based on the provided content.
+Keep in mind that your suggestions should resonate with the LinkedIn audience and reflect professionalism while being engaging and informative.
   `;
   };
 
