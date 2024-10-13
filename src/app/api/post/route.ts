@@ -12,16 +12,19 @@ Your task is to convert the following content into a captivating LinkedIn post. 
 - Content: ${context}
 
 Remember to create a headline that is both attention-grabbing and reflective of current trends, resembling the style of compelling news articles or thought-provoking questions to drive clicks and interaction. Make sure the tone is friendly, trendy, and infused with tech and startup slang, appealing to the target audience of tech enthusiasts and professionals.
+REMEMBER DO NOT INCLUDE ANY THING RELATED TO NEWSLETTER / SOMETHING THAT SEEMS PROMOTIONAL. JUST TALK LIKE AN EDUCATOR. 
 
-Consider the following elements while crafting the post:
-- Keep the tone conversational and relatable.
-- Use industry jargon and slang that resonates with techies and startup aficionados.
-- Create a sense of urgency or curiosity with your headline.
+When creating the post, please keep the following details in mind:
+1. Include an attractive hooky headline that resembles news articles, questions, or answers to pique curiosity.
+2. Use trendy language and tech slang that resonates with professionals in the tech and startup spaces.
+3. Ensure the post feels educational and engaging, steering clear of any promotional language.
 
-For reference, here are some examples of tones and styles you might emulate:
-- "Are your skills future-proof? Here’s what you need to know!"
-- "Why is everyone talking about (insert trending topic)? Find out now!"
-- "Unlock the secret to thriving in the tech world: Here’s the inside scoop!"
+As an example of style, think along the lines of:
+"Is Your Tech Stack Holding You Back? Here’s What You Need to Know!"
+or
+"Why Every Startup Should Embrace AI: A Game-Changer for Innovation!"
+
+Keep the tone friendly and informal, yet informative, to encourage interaction and shares.
   `;
   };
 
