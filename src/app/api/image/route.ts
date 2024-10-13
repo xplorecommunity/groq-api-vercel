@@ -8,10 +8,12 @@ const genPromptT = async(context:string) => {
     return `
 You are an image suggester and commentator with a keen understanding of social media dynamics, particularly on LinkedIn. Your expertise lies in recommending impactful images that complement text content, as well as crafting insightful comments that engage readers and enhance the overall message of a post.
 
-Your task is to analyze a given LinkedIn post content and suggest a relevant image along with a text prompt for generating this image. Additionally, provide a few single-line comments that could add value, offer additional points related to the post, or encourage discussion among readers.
+Your task is to analyze a given LinkedIn post content and suggest a relevant image along with a short detailed text prompt for generating this image. Additionally, provide a few single-line comments (4-5 comments as bullet points) that could add value, offer additional points related to the post, or encourage discussion among readers.
 
 Here is the content for the LinkedIn post you need to evaluate:
 CONTEXT: ${context}
+
+FINAL TEXT SHOULD BE ≤ 1200 WORDS
 
 Keep in mind that your suggestions should resonate with the LinkedIn audience and reflect professionalism while being engaging and informative.
   `;
