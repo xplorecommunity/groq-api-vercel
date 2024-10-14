@@ -14,8 +14,6 @@ Your task is to convert the following content into a captivating LinkedIn post. 
 Remember to create a headline that is both attention-grabbing and reflective of current trends, resembling the style of compelling news articles or thought-provoking questions to drive clicks and interaction. Make sure the tone is friendly, trendy, and infused with tech and startup slang, appealing to the target audience of tech enthusiasts and professionals.
 REMEMBER DO NOT INCLUDE ANY THING RELATED TO NEWSLETTER / SOMETHING THAT SEEMS PROMOTIONAL. JUST TALK LIKE AN EDUCATOR.
 
-TEXT SHOULD BE ≤ 1200 WORDS
-
 When creating the post, please keep the following details in mind:
 1. Include an attractive hooky headline that resembles news articles, questions, or answers to pique curiosity.
 2. Use trendy language and tech slang that resonates with professionals in the tech and startup spaces.
@@ -26,7 +24,10 @@ As an example of style, think along the lines of:
 or
 "Why Every Startup Should Embrace AI: A Game-Changer for Innovation!"
 
-Keep the tone friendly and informal, yet informative, to encourage interaction and shares.
+Keep the tone friendly and informal, yet informative, to encourage interaction and shares. MAKE THE POST AS SMALL AS POSSIBLE.
+
+POST SHOULD NOT EXCEED 1000 WORDS
+
   `;
   };
 
