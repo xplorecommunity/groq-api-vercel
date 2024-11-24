@@ -19,11 +19,11 @@ Create a detailed prompt for generating an image that:
 - Maintains simplicity and clarity
 
 Format your image prompt (short and clear) as:
-SCENE: [Describe the core visual setup]
-STYLE: [Specify artistic direction]
-COLORS: [Define color palette]
-MOOD: [Describe emotional tone]
-DETAILS: [List specific elements to include]
+SCENE: [Describe the core visual setup in one sentence]
+STYLE: [Specify artistic direction in one sentence]
+COLORS: [Define color palette in one sentence]
+MOOD: [Describe emotional tone in one sentence]
+DETAILS: [List specific elements to include in one sentence]
 
 Example Image Prompt:
 SCENE: A minimalist workspace with a laptop displaying data visualizations
@@ -38,14 +38,15 @@ Provide 3 thought-provoking discussion points that:
 - Share practical insights
 - Invite reader experiences
 - Encourage professional dialogue
+- in one sentence each
 
 Provide 3 thought-provoking discussion points that:
 - Expand on the main topic
 - No Questioning, just give a statement what u feel about the future of this topic
 - Any unknown fact about this topic
+- max 1-2 sentences each
 
-
-Format each hook as a single clear statement or question that prompts reflection or response. must be clear and concise - just one sentence.
+Format each hook as a single clear statement or question that prompts reflection or response. must be clear and concise - just 1-2 sentences each.
 
 Remember:
 - Keep visuals professional but innovative
