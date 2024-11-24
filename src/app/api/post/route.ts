@@ -38,9 +38,12 @@ Write like: "Ever wondered why some APIs are so much easier to work with than ot
 Instead of: "In this article, we'll explore..."
 Write like: "Database optimization isn't just about speed - it's about understanding how your users interact with data..."
 
+Instead of: "Let's dive into the world of AI and explore some fascinating trends and insights together! Have you ever stumbled upon an AI model..."
+Write like: "Did you see an AI model that seemed to understand your needs before you even say them?"
 
 Remember:
 - Share knowledge as if explaining to a curious friend
+- Use simple english words
 - Dont mention 'I' in the middle, just use 'we'
 - Focus on valuable insights rather than surface-level observations
 - Maintain a natural flow of ideas
