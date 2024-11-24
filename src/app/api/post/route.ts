@@ -4,59 +4,56 @@ import { config } from 'dotenv';
 
 config();
 
+
 const PostGenerationPrompt = async (context: string) => {
   return `
-You are a knowledge sharer who loves explaining complex topics in simple, engaging ways. Transform the following content into an insightful discussion:
+Transform this content into an engaging knowledge-sharing discussion that resonates with a broader audience.
 
-${context}
+Context Transformation Guidelines:
+Start with attention-grabbing questions like:
+- "What makes certain technologies stand out in a crowded field?"
+- "Have you noticed patterns in successful system designs?"
+- "Why do some solutions scale better than others?"
 
-Writing Style Guide:
-1. Write as if you're having a one-on-many conversation
-2. Break down complex ideas into simple, digestible points
-3. Use natural transitions between topics
-4. Share insights that provoke thought and invite discussion
-5. Keep explanations clear and relatable
-6. Include real-world applications or examples when relevant
+Writing Approach:
+- Present ideas conversationally, as if speaking to a room of interested peers
+- Use "we" to create collective exploration of ideas
+- Keep language simple and accessible
+- Share real-world examples that illustrate key points
+- Connect concepts to practical applications
 
-Content Structure:
-- Start with an interesting insight or question
-- Present information in a logical flow
-- Address potential questions readers might have
-- Close with a thought-provoking point or practical takeaway
+Structure Flow:
+1. Opening hook → engaging question or observation
+2. Core concept → clear explanation with examples
+3. Practical insights → real-world applications
+4. Key takeaways → actionable conclusions
 
-Key Requirements:
-- STRICLTY Keep the total response under 1000 characters
-- Tone: Warm, knowledgeable, and engaging
-- Style: Clear, concise, and conversational
-- Focus: Educational and insightful
+Style Requirements:
+- Maximum length: 1000 characters
+- Tone: Warm and professional
+- Language: Clear and straightforward
 - Format: Natural paragraphs with smooth transitions
 
-Example Style:
-Instead of: "Hey tech people! Today we're diving into..."
-Write like: "Have you ever thought about why some APIs are easier to use than others? The answer is..."
+Voice Examples:
+✓ "Ever wondered why distributed systems are so challenging?"
+✓ "The beauty of modern databases lies in their simplicity"
+✓ "Looking at successful cloud architectures reveals a pattern"
+✗ Avoid: "Today we'll explore..." or "In this article..."
+✗ Avoid: First-person singular ("I think...")
+✗ Avoid: Greetings ("Hey there...")
 
-Instead of: "In this article, we'll explore..."
-Write like: "Improving databases isn’t just about making them faster - it’s about knowing how your users work with the data..."
+Essential Guidelines:
+- Focus on valuable insights over basic facts
+- Build natural connections between ideas
+- Create relatable, practical examples
+- End with meaningful takeaways
+- Skip meta-references about writing
+- Begin directly with substantive content
 
-Instead of: "Let's dive into the world of AI"
-Write like: "Did you notice an AI model that seemed to get what you needed before you even said it?"
+Input Context:
+${context}
 
-Instead of: "Hey There, Did you know..."
-Write like: "Did you know..."
-
-Remember:
-- Share knowledge as if explaining to a curious audience all together
-- Use simple english words and idioms
-- Dont mention 'I' in the middle, just use 'we'
-- Focus on valuable insights rather than surface-level observations
-- Maintain a natural flow of ideas
-- Keep readers engaged through relatable examples
-- End with something meaningful that stays with the reader
-- NEVER use meta-references about the writing process
-- NEVER mention that this is a rewrite or transformation
-- Start DIRECTLY with the content itself
-
-The goal is to create content that feels like a genuine sharing of knowledge from one professional to another.`;
+The goal: Create engaging, insightful content that feels like knowledge shared among professionals.`;
 };
 
 const groq = process.env.GROQ_API_KEY ? new Groq({ apiKey: process.env.GROQ_API_KEY }) : null;
