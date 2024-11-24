@@ -25,7 +25,7 @@ Content Structure:
 - Close with a thought-provoking point or practical takeaway
 
 Key Requirements:
-- Maximum length: 1000 words
+- STRICLTY Keep the total response under 1000 characters
 - Tone: Warm, knowledgeable, and engaging
 - Style: Clear, concise, and conversational
 - Focus: Educational and insightful
@@ -38,8 +38,10 @@ Write like: "Ever wondered why some APIs are so much easier to work with than ot
 Instead of: "In this article, we'll explore..."
 Write like: "Database optimization isn't just about speed - it's about understanding how your users interact with data..."
 
+
 Remember:
 - Share knowledge as if explaining to a curious friend
+- Dont mention 'I' in the middle, just use 'we'
 - Focus on valuable insights rather than surface-level observations
 - Maintain a natural flow of ideas
 - Keep readers engaged through relatable examples
