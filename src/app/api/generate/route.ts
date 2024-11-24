@@ -1,155 +1,72 @@
-import {NextRequest, NextResponse} from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import Groq from "groq-sdk";
 import { config } from 'dotenv';
 
 config();
 
-const genPromptT = async(context:string) => {
-    return `
-      You are a Content Takeaway Bot.
-  
-      Analyze the following content and extract key takeaways:
-      
-  CONTEXT:
-  ${context}
-  
-  Guidelines:
-  1. Read through the entire content carefully
-  2. Identify at least 10 key takeaways from each paragraph
-  3. Ensure no important information is missed
-  4. Present takeaways as concise bullet points
-  5. Use clear, simple language
-  6. Maintain the original meaning and context
-  7. Number each takeaway for easy reference
-  8. If the content has subsections, group takeaways accordingly
-  
-  Output Format:
-  - List all takeaways as numbered bullet points
-  - If applicable, use subheadings to organize takeaways by content sections
-  - Ensure each takeaway is a complete thought, even if brief
-  
-  Additional Notes:
-  - Generate as many takeaways as needed to cover all important points
-  - Avoid repetition, but don't miss nuances or related ideas
-  - Avoid direct promotional content
-  - Focus on providing value to the reader
-  - Focus on facts, insights, and actionable information
-  - Include relevant statistics or data points if present in the content
-  
-  Aim to create a comprehensive list of takeaways that could serve as a detailed summary of the entire content.
-  `;
-  };
-
-
-const genPromptTN = async(context:string) => {
+const generatePrompt = (content: string) => {
   return `
-    You are a Content Takeaway Bot.
+    You are a content distillation expert. Your task is to extract and present only the valuable information from the following content:
 
-    Analyze the following content and extract key takeaways:
+    ${content}
 
-CONTEXT:
-${context}
+    Instructions:
+    1. Extract and present ONLY the useful facts, insights, updates, and actionable information
+    2. Do NOT include any of these in your response:
+       - No mentions of newsletters, articles, or source material
+       - No "In this update..." or similar framing phrases
+       - No meta-references like "This piece discusses..."
+       - No introductory or concluding statements about the content
 
-Guidelines:
-1. Read through the entire content carefully
-2. Summarize into one sentence from each paragraph
-3. Ensure no important information is missed
-4. Present the one sentence summary short and crisp
-5. Use clear, simple language
-6. Maintain the original meaning and short context
-8. SHOULD NOT EXCEED 1500 CHARACTERS
+    Format your response as:
+    - Write in clear, direct sentences
+    - Present information as if it's standalone knowledge
+    - Keep the total response under 1500 characters
+    - Preserve any specific numbers, dates, or statistics
+    - Use simple, accessible language
 
-Output Format:
-- If applicable, use subheadings to organize one sentence summaries by content sections
-- Ensure each summary is a CRISP & SHORT thought.
+    Example style:
+    ❌ "This newsletter discusses the latest developments in AI..."
+    ✅ "GPT-4 has demonstrated improved capabilities in mathematical reasoning..."
 
-Additional Notes:
-- Generate short one/two sentence summaries as needed to cover all important points
-- Avoid repetition, but don't miss nuances or related ideas
-- Avoid direct promotional content
-- Focus on providing value to the reader
-- Focus on facts, insights, and actionable information
-- Include relevant statistics or data points if present in the content
+    ❌ "In this month's update, we cover..."
+    ✅ "The new climate policy will reduce emissions by 30% by 2025..."
 
-Aim to create a short list of one sentence summaries that could serve as a CRISP summary of the entire content.
-`;
+    Focus solely on conveying the valuable information itself, as if it were established knowledge rather than content from any particular source.
+  `;
 };
 
-  const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+// Initialize Groq client
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-  async function main(prompt:string) {
-  //   console.log(prompt);
+
+export async function POST(request: NextRequest) {
+  // Validate API key
+  const header = request.headers.get("x-api-key");
+  if (!header || header !== process.env.API_KEY) {
+    return NextResponse.json({ status: 401, message: "Invalid API Key" });
+  }
+
+  // Validate GROQ API key
+  if (!process.env.GROQ_API_KEY) {
+    return NextResponse.json({ status: 500, message: "GROQ_API_KEY not found" });
+  }
+
+  try {
+    // Get content from request body
+    const body = await request.json();
+    const content = typeof body === "string" ? body : JSON.stringify(body);
+
+    // Generate summary using Groq
     const chatCompletion = await groq.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
+      messages: [{ role: "user", content: generatePrompt(content) }],
       model: "llama3-8b-8192",
     });
-  
-    let res = chatCompletion.choices[0].message.content;
-    // console.log(res);
-    return res;
+
+    const summary = chatCompletion.choices[0].message.content;
+    return NextResponse.json({ result: summary });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ status: 500, message: "Error processing request" });
   }
-  
-  export async function POST(request:NextRequest) {
-
-    const header = request.headers.get("x-api-key")
-    if (!header || header!== process.env.API_KEY) {
-      return NextResponse.json({ status: 401, message: "Invalid API Key" });
-    }
-
-    const { GROQ_API_KEY } = process.env;
-    
-    if (!GROQ_API_KEY) {
-      return NextResponse.json({status:500, message: "GROQ_API_KEY not found" });
-    }
-
-    const body = await request.json();
-    const { data ,result} = body;
-
-    if(!data && !result){
-    console.log(data,result)
-    console.log(typeof(body))
-    if(typeof(body)=="string"){
-    try{ 
-      const bprompt = await genPromptTN(JSON.stringify(body));
-      // console.log('Generated prompt:', prompt);
-      const bresult = await main(bprompt);
-
-      return NextResponse.json({ "result": bresult });
-    }
-    catch(e){
-      console.log(e)
-    }
-      
-    }
-    console.log(body)
-      return NextResponse.json({ status: 400, message: "Missing data/Result" });
-    }
-
-    
-    
-    if (result){
-    console.log("Inside Result")
-    const rprompt = await genPromptT(JSON.stringify(result));
-    // console.log('Generated prompt:', prompt);
-    const rresult = await main(rprompt);
-  
-    return NextResponse.json({ "result": rresult });
-    }
-  
-    const prompt = await genPromptT(JSON.stringify(data));
-    // console.log('Generated prompt:', prompt);
-    const dresult = await main(prompt);
-  
-    return NextResponse.json({ "result": dresult });
-  }
-
-
-
-    export async function GET (request: NextRequest){
-    const greeting = "Hello World!!"
-    const json = {
-        greeting
-    };
-    
-    return NextResponse.json(json);
 }

@@ -32,111 +32,74 @@ POST SHOULD NOT EXCEED 1000 WORDS
   };
 
 
-const genPromptTN = async(context:string) => {
-  return `
-    You are a Content Takeaway Bot.
 
-    Analyze the following content and extract key takeaways:
+const groq = process.env.GROQ_API_KEY ? new Groq({ apiKey: process.env.GROQ_API_KEY }) : null;
 
-CONTEXT:
-${context}
 
-Guidelines:
-1. Read through the entire content carefully
-2. Summarize into one sentence from each paragraph
-3. Ensure no important information is missed
-4. Present the one sentence summary short and crisp
-5. Use clear, simple language
-6. Maintain the original meaning and short context
-8. SHOULD NOT EXCEED 1500 CHARACTERS
-
-Output Format:
-- If applicable, use subheadings to organize one sentence summaries by content sections
-- Ensure each summary is a CRISP & SHORT thought.
-
-Additional Notes:
-- Generate short one/two sentence summaries as needed to cover all important points
-- Avoid repetition, but don't miss nuances or related ideas
-- Avoid direct promotional content
-- Focus on providing value to the reader
-- Focus on facts, insights, and actionable information
-- Include relevant statistics or data points if present in the content
-
-Aim to create a short list of one sentence summaries that could serve as a CRISP summary of the entire content.
-`;
-};
-
-  const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
-  async function main(prompt:string) {
-  //   console.log(prompt);
-    const chatCompletion = await groq.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
-      model: "llama3-8b-8192",
-    });
-
-    let res = chatCompletion.choices[0].message.content;
-    // console.log(res);
-    return res;
+// Helper function to generate response using Groq
+async function generateGroqResponse(content: string) {
+  if (!groq) {
+    throw new Error("GROQ client not initialized");
   }
 
-  export async function POST(request:NextRequest) {
+  const prompt = await genPromptT(content);
+  const completion = await groq.chat.completions.create({
+    messages: [{ role: "user", content: prompt }],
+    model: "llama3-8b-8192",
+  });
+  return completion.choices[0].message.content;
+}
 
-    const header = request.headers.get("x-api-key")
-    if (!header || header!== process.env.API_KEY) {
-      return NextResponse.json({ status: 401, message: "Invalid API Key" });
+// Helper function to generate error response
+function errorResponse(status: number, message: string) {
+  return NextResponse.json({ status, message });
+}
+
+
+
+export async function POST(request: NextRequest) {
+  try {
+    // Validate API key
+    const header = request.headers.get("x-api-key");
+    if (!header || header !== process.env.API_KEY) {
+      return errorResponse(401, "Invalid API Key");
     }
 
-    const { GROQ_API_KEY } = process.env;
-
-    if (!GROQ_API_KEY) {
-      return NextResponse.json({status:500, message: "GROQ_API_KEY not found" });
+    // Check if Groq client is initialized
+    if (!groq) {
+      return errorResponse(500, "GROQ client not initialized");
     }
 
+    // Parse request body
     const body = await request.json();
-    const { data ,result} = body;
 
-    if(!data && !result){
-    console.log(data,result)
-    console.log(typeof(body))
-    if(typeof(body)=="string"){
-    try{ 
-      const bprompt = await genPromptT(JSON.stringify(body));
-      // console.log('Generated prompt:', prompt);
-      const bresult = await main(bprompt);
+    // Handle different input formats
+    let content: string;
 
-      return NextResponse.json({ "result": bresult });
-    }
-    catch(e){
-      console.log(e)
+    if (typeof body === "string") {
+      content = body;
+    } else if (body.result) {
+      content = JSON.stringify(body.result);
+    } else if (body.data) {
+      content = JSON.stringify(body.data);
+    } else {
+      return errorResponse(400, "Missing content in request body");
     }
 
-    }
-    console.log(body)
-      return NextResponse.json({ status: 400, message: "Missing data/Result" });
-    }
+    // Generate and return response
+    const result = await generateGroqResponse(content);
+    return NextResponse.json({ result });
 
-
-
-    if (result){
-    console.log("Inside Result")
-    const rprompt = await genPromptT(JSON.stringify(result));
-    // console.log('Generated prompt:', prompt);
-    const rresult = await main(rprompt);
-
-    return NextResponse.json({ "result": rresult });
-    }
-
-    const prompt = await genPromptT(JSON.stringify(data));
-    // console.log('Generated prompt:', prompt);
-    const dresult = await main(prompt);
-
-    return NextResponse.json({ "result": dresult });
+  } 
+  catch (error) {
+    console.error("Error processing request:", error);
+    return errorResponse(500, 
+      error instanceof Error ? error.message : "Error processing request"
+    );
   }
+}
 
-
-
-    export async function GET (request: NextRequest){
+export async function GET (request: NextRequest){
     const greeting = "Hello World!!"
     const json = {
         greeting
