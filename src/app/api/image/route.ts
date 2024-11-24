@@ -39,14 +39,20 @@ Provide 3 thought-provoking discussion points that:
 - Invite reader experiences
 - Encourage professional dialogue
 
-Format each hook as a single clear statement or question that prompts reflection or response.
+Provide 2 thought-provoking discussion points that:
+- Expand on the main topic
+- No Questioning, just give a statement what u feel about the future of this topic
+- Any unknown fact about this
+
+
+Format each hook as a single clear statement or question that prompts reflection or response. must be clear and concise - just one sentence.
 
 Remember:
 - Keep visuals professional but innovative
 - Avoid clichéd business imagery
 - Focus on storytelling through visuals
 - Ensure hooks align with content theme
-- Maximum response length: 1200 words
+- Maximum response length: 1200 characters
 
 The goal is to create visual suggestions and discussion points that feel authentic and valuable to professionals.`;
 };
