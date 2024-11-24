@@ -53,7 +53,7 @@ Remember:
 - Avoid clichéd business imagery
 - Focus on storytelling through visuals
 - Ensure hooks align with content theme
-- STRICLTY Keep the total response under 1500 characters
+- STRICLTY Keep the total response under 1200 characters
 
 The goal is to create visual suggestions and discussion points that feel authentic and valuable to professionals.`;
 };
