@@ -18,7 +18,7 @@ Create a detailed prompt for generating an image that:
 - Incorporates subtle metaphors or symbolism
 - Maintains simplicity and clarity
 
-Format your image prompt as:
+Format your image prompt (short and clear) as:
 SCENE: [Describe the core visual setup]
 STYLE: [Specify artistic direction]
 COLORS: [Define color palette]
@@ -39,10 +39,10 @@ Provide 3 thought-provoking discussion points that:
 - Invite reader experiences
 - Encourage professional dialogue
 
-Provide 2 thought-provoking discussion points that:
+Provide 3 thought-provoking discussion points that:
 - Expand on the main topic
 - No Questioning, just give a statement what u feel about the future of this topic
-- Any unknown fact about this
+- Any unknown fact about this topic
 
 
 Format each hook as a single clear statement or question that prompts reflection or response. must be clear and concise - just one sentence.
