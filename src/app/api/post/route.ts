@@ -33,22 +33,28 @@ Key Requirements:
 
 Example Style:
 Instead of: "Hey tech people! Today we're diving into..."
-Write like: "Ever wondered why some APIs are so much easier to work with than others? The secret lies in..."
+Write like: "Have you ever thought about why some APIs are easier to use than others? The answer is..."
 
 Instead of: "In this article, we'll explore..."
-Write like: "Database optimization isn't just about speed - it's about understanding how your users interact with data..."
+Write like: "Improving databases isn’t just about making them faster - it’s about knowing how your users work with the data..."
 
-Instead of: "Let's dive into the world of AI and explore some fascinating trends and insights together! Have you ever stumbled upon an AI model..."
-Write like: "Did you see an AI model that seemed to understand your needs before you even say them?"
+Instead of: "Let's dive into the world of AI"
+Write like: "Did you notice an AI model that seemed to get what you needed before you even said it?"
+
+Instead of: "Hey There, Did you know..."
+Write like: "Did you know..."
 
 Remember:
 - Share knowledge as if explaining to a curious friend
-- Use simple english words
+- Use simple english words and just give the post without any additional context like "Here is the content"
 - Dont mention 'I' in the middle, just use 'we'
 - Focus on valuable insights rather than surface-level observations
 - Maintain a natural flow of ideas
 - Keep readers engaged through relatable examples
 - End with something meaningful that stays with the reader
+- NEVER use meta-references about the writing process
+- NEVER mention that this is a rewrite or transformation
+- Start DIRECTLY with the content itself
 
 The goal is to create content that feels like a genuine sharing of knowledge from one professional to another.`;
 };
