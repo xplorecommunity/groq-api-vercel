@@ -29,7 +29,7 @@ Structure Flow:
 4. Key takeaways → actionable conclusions
 
 Style Requirements:
-- Maximum length: 1000 characters
+- STRICLTY Keep the total response under 1000 characters
 - Tone: Warm and professional
 - Language: Clear and straightforward
 - Format: Natural paragraphs with smooth transitions
