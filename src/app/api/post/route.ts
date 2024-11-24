@@ -4,34 +4,49 @@ import { config } from 'dotenv';
 
 config();
 
-const genPromptT = async(context:string) => {
-    return `
-You’re a seasoned social media strategist with a flair for crafting engaging LinkedIn posts that resonate with the tech community and startup culture. Your expertise lies in creating posts that not only capture attention with catchy headlines but also foster connection and engagement among followers.
+const PostGenerationPrompt = async (context: string) => {
+  return `
+You are a knowledge sharer who loves explaining complex topics in simple, engaging ways. Transform the following content into an insightful discussion:
 
-Your task is to convert the following content into a captivating LinkedIn post. Here’s the content you’ll be working with:
-- Content: ${context}
+${context}
 
-Remember to create a headline that is both attention-grabbing and reflective of current trends, resembling the style of compelling news articles or thought-provoking questions to drive clicks and interaction. Make sure the tone is friendly, trendy, and infused with tech and startup slang, appealing to the target audience of tech enthusiasts and professionals.
-REMEMBER DO NOT INCLUDE ANY THING RELATED TO NEWSLETTER / SOMETHING THAT SEEMS PROMOTIONAL. JUST TALK LIKE AN EDUCATOR.
+Writing Style Guide:
+1. Write as if you're having a one-on-one conversation
+2. Break down complex ideas into simple, digestible points
+3. Use natural transitions between topics
+4. Share insights that provoke thought and invite discussion
+5. Keep explanations clear and relatable
+6. Include real-world applications or examples when relevant
 
-When creating the post, please keep the following details in mind:
-1. Include an attractive hooky headline that resembles news articles, questions, or answers to pique curiosity.
-2. Use trendy language and tech slang that resonates with professionals in the tech and startup spaces.
-3. Ensure the post feels educational and engaging, steering clear of any promotional language.
+Content Structure:
+- Start with an interesting insight or question
+- Present information in a logical flow
+- Address potential questions readers might have
+- Close with a thought-provoking point or practical takeaway
 
-As an example of style, think along the lines of:
-"Is Your Tech Stack Holding You Back? Here’s What You Need to Know!"
-or
-"Why Every Startup Should Embrace AI: A Game-Changer for Innovation!"
+Key Requirements:
+- Maximum length: 1000 words
+- Tone: Warm, knowledgeable, and engaging
+- Style: Clear, concise, and conversational
+- Focus: Educational and insightful
+- Format: Natural paragraphs with smooth transitions
 
-Keep the tone friendly and informal, yet informative, to encourage interaction and shares. MAKE THE POST AS SMALL AS POSSIBLE.
+Example Style:
+Instead of: "Hey tech people! Today we're diving into..."
+Write like: "Ever wondered why some APIs are so much easier to work with than others? The secret lies in..."
 
-POST SHOULD NOT EXCEED 1000 WORDS
+Instead of: "In this article, we'll explore..."
+Write like: "Database optimization isn't just about speed - it's about understanding how your users interact with data..."
 
-  `;
-  };
+Remember:
+- Share knowledge as if explaining to a curious friend
+- Focus on valuable insights rather than surface-level observations
+- Maintain a natural flow of ideas
+- Keep readers engaged through relatable examples
+- End with something meaningful that stays with the reader
 
-
+The goal is to create content that feels like a genuine sharing of knowledge from one professional to another.`;
+};
 
 const groq = process.env.GROQ_API_KEY ? new Groq({ apiKey: process.env.GROQ_API_KEY }) : null;
 
@@ -42,7 +57,7 @@ async function generateGroqResponse(content: string) {
     throw new Error("GROQ client not initialized");
   }
 
-  const prompt = await genPromptT(content);
+  const prompt = await PostGenerationPrompt(content);
   const completion = await groq.chat.completions.create({
     messages: [{ role: "user", content: prompt }],
     model: "llama3-8b-8192",
