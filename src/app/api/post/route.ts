@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 config();
 
 
-const PostGenerationPrompt = async (context: string) => {
+const PostGenerationPrompt1 = async (context: string) => {
   return `
 Transform this content into an engaging knowledge-sharing discussion that resonates with a broader audience.
 
@@ -59,6 +59,49 @@ ${context}
 
 The goal: Create engaging, insightful content that feels like knowledge shared among professionals.`;
 };
+
+
+const PostGenerationPrompt = async (context: string) => {
+  return `
+Transform this content into an engaging, knowledge-sharing discussion that resonates with a broad audience while preserving essential details.
+**Transformation Guidelines:**
+jump directly into the content - no introduction or explanation
+1. **Engaging Start**: Open with a concise and intriguing hook or observation to draw in the reader. For example:  
+   *"Anthropic and NVIDIA are making waves in AI—here’s why!"*
+2. **Core Content**: Present the key points in an accessible, conversational tone. Maintain focus on the main message without losing the richness of the details.  
+   Example:  
+   *"Anthropic now commands 24% of the enterprise AI market, marking a significant rise, while OpenAI has seen a 16% drop. This trend highlights shifting industry dynamics."*
+3. **Brevity with Depth**: Ensure the content feels full of insights without being overwhelming. Avoid overloading with unnecessary context or technical jargon. 
+4. **Relatable Takeaways**: Conclude with meaningful insights or questions to encourage reflection or discussion.  
+   Example:  
+   *"What does this mean for the future of enterprise AI investments?"*
+**Tone and Style:**
+- Tone: Professional yet conversational, striking a balance between informative and engaging.
+- Format: Short paragraphs or bullet points for readability.
+- Voice: Use collective pronouns ("we," "our") and avoid first-person singular or meta-references (e.g., "In this article, we’ll explore...").
+- Emojis: Use sparingly and only for emphasis or tone enhancement.  
+  Example: *"Anthropic and NVIDIA Growing 💥"*
+
+STRICTLY jump directly into the content - no introduction or explanation of what you are giving/doing.
+
+**Avoid:**
+- Excessive commentary or lengthy introductions.
+- Greetings ("Hey there"), meta-statements, or first-person perspectives ("I think...").
+- Redundant details or overly technical jargon.
+- phrases like *"Here's a rewritten version..."*.
+
+
+**Structure Flow:**
+1. **Headline**: Punchy, engaging, and aligned with the main takeaway.  
+   Example: *"Anthropic and NVIDIA Growing 💥"*
+2. **Key Insights**: Share key data or points in 2-3 brief, engaging sentences.  
+   Example: *"Anthropic now holds 24% of the enterprise AI market, while OpenAI has lost 16%. This shift underlines the growing demand for specialized AI solutions."*
+3. **Closing Thought**: Offer practical implications or thought-provoking takeaways.  
+   Example: *"Could this signal a broader shift in how enterprises approach AI strategy?"*
+Input Context:  ${context}
+Goal: Transform the provided context into a compelling, insightful post that sparks interest and discussion among professionals.`;
+};
+
 
 const groq = process.env.GROQ_API_KEY ? new Groq({ apiKey: process.env.GROQ_API_KEY }) : null;
 
