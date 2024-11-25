@@ -9,6 +9,7 @@ const PostGenerationPrompt = async (context: string) => {
 Transform this content into an engaging, knowledge-sharing discussion that resonates with a broad audience while preserving essential details.
 
 **Transformation Guidelines:**
+jump directly into the content - no introduction or explanation
 1. **Engaging Start**: Open with a concise and intriguing hook or observation to draw in the reader. For example:  
    *"Anthropic and NVIDIA are making waves in AI—here’s why!"*
 
@@ -33,6 +34,8 @@ Transform this content into an engaging, knowledge-sharing discussion that reson
 - Excessive commentary or lengthy introductions.
 - Greetings ("Hey there"), meta-statements, or first-person perspectives ("I think...").
 - Redundant details or overly technical jargon.
+- phrases like *"Here's a rewritten version..."*.
+
 
 **Structure Flow:**
 1. **Headline**: Punchy, engaging, and aligned with the main takeaway.  
