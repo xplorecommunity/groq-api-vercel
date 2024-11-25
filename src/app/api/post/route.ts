@@ -23,13 +23,13 @@ Writing Approach:
 - Connect concepts to practical applications
 
 Structure Flow:
-1. Opening hook → engaging question or observation
+1. Opening hook → engaging question or observation (Optional)
 2. Core concept → clear explanation with examples
 3. Practical insights → real-world applications (Optional)
 4. Key takeaways → actionable conclusions (Mandatory)
 
 Style Requirements:
-- STRICLTY Keep the total response under 1000 characters
+- STRICLTY Keep the total response under 1500 characters
 - Tone: Warm and informational
 - Language: Clear and straightforward
 - Format: Natural paragraphs with smooth transitions, short and crisp, idiomatic.
