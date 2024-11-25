@@ -25,15 +25,15 @@ Writing Approach:
 Structure Flow:
 1. Opening hook → engaging question or observation
 2. Core concept → clear explanation with examples
-3. Practical insights → real-world applications
-4. Key takeaways → actionable conclusions
+3. Practical insights → real-world applications (Optional)
+4. Key takeaways → actionable conclusions (Mandatory)
 
 Style Requirements:
 - STRICLTY Keep the total response under 1000 characters
 - Tone: Warm and informational
 - Language: Clear and straightforward
 - Format: Natural paragraphs with smooth transitions, short and crisp, idiomatic.
-- Keep your post brief and engaging. Aim for around 10 short paragraphs, each 1-2 lines long, to ensure easy readability.
+- Keep your post brief and engaging. Aim for around 10 short paragraphs, each 1-2 lines long, to ensure easy readability with emojis and bullet points.
 
 Voice Examples:
 ✓ "Ever wondered why distributed systems are so challenging?"
