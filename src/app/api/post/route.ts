@@ -4,57 +4,37 @@ import { config } from 'dotenv';
 
 config();
 
-
 const PostGenerationPrompt = async (context: string) => {
   return `
-Transform this content into an engaging knowledge-sharing discussion that resonates with a broader audience.
+Transform the content into a concise, engaging discussion with a headline-style structure that highlights key takeaways.
 
-Context Transformation Guidelines:
-Start with attention-grabbing questions like:
-- "What makes certain technologies stand out in a crowded field?"
-- "Have you noticed patterns in successful system designs?"
-- "Why do some solutions scale better than others?"
+**Guidelines for Transformation:**
+- **Headline Format**: Summarize the main idea in a punchy, eye-catching title (e.g., *"Anthropic and NVIDIA Growing 💥"*).
+- **Core Content**: Present the data or key points succinctly with minimal context (e.g., *"Anthropic now holds 24% of the enterprise AI market, while OpenAI lost 16% share."*).
+- Use emojis sparingly for emphasis or to convey excitement.
+- Keep sentences short and impactful—avoid lengthy introductions or overly conversational tones.
+- Focus on clarity and readability: prioritize direct insights over background or extended context.
 
-Writing Approach:
-- Present ideas conversationally, as if speaking to a room of interested peers
-- Use "we" to create collective exploration of ideas
-- Keep language simple and accessible
-- Connect concepts to practical applications
+**Do:**
+- Use bullet points or clear paragraph breaks for structure.
+- Keep responses crisp and to the point.
+- Provide actionable or interesting takeaways (e.g., *"This shift highlights the growing demand for specialized AI solutions."*).
 
-Structure Flow:
-1. Opening hook → engaging question or observation (Optional)
-2. Core concept → clear explanation with examples (Straight to point)
-- Keep your post brief and engaging. Aim for around 10 short paragraphs, each 1-2 lines long, to ensure easy readability with emojis and bullet points.
+**Avoid:**
+- Extended commentary or philosophical musings.
+- Overly technical jargon unless the context demands it.
+- First-person singular ("I") or casual openings like "Hey there" or "Let's dive in."
 
-Style Requirements:
-- STRICLTY Keep the total response under 1000 characters
-- Tone: Warm and informational
-- Language: Clear and straightforward
-- Format: Natural paragraphs with smooth transitions, short and crisp, idiomatic.
+**Structure Example:**
+- **Headline**: *"Anthropic and NVIDIA Growing 💥"*
+- **Content**: *"Anthropic now holds 24% of the enterprise AI market, while OpenAI lost 16% share. This trend shows how enterprises are diversifying their AI investments."*
 
-Voice Examples:
-✓ "Ever wondered why distributed systems are so challenging?"
-✓ "The beauty of modern databases lies in their simplicity"
-✓ "Looking at successful cloud architectures reveals a pattern"
-✗ Avoid: "Today we'll explore..." or "In this article..."
-✗ Avoid: First-person singular ("I think...")
-✗ Avoid: Greetings ("Hey there...")
-✗ Avoid: "Let's dive into the world of ..."
-
-Essential Guidelines:
-- Focus on valuable insights over basic facts
-- Build natural connections between ideas
-- Create relatable, practical examples
-- End with meaningful takeaways
-- Skip meta-references about writing
-- Begin directly with substantive content
-- Avoid "Imagine a world where...", "welcome to the world of ...", 
-
-Use this Context:
+Input Context:  
 ${context}
 
-The goal: Create engaging, insightful content that feels like knowledge shared among professionals.`;
+Goal: Deliver professional, concise, and impactful content tailored for knowledge-sharing discussions.`;
 };
+
 
 const groq = process.env.GROQ_API_KEY ? new Groq({ apiKey: process.env.GROQ_API_KEY }) : null;
 
