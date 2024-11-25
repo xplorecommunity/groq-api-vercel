@@ -32,7 +32,7 @@ Structure Flow:
 Style Requirements:
 - STRICLTY Keep the total response under 1000 characters
 - Tone: Warm and informational
-- Language: Clear and straightforward
+- Language: Clear and straightforward, Idiomatic
 - Format: Natural paragraphs with smooth transitions, short and crisp, idiomatic.
 
 Voice Examples:
@@ -52,7 +52,7 @@ Essential Guidelines:
 - Skip meta-references about writing
 - Begin directly with substantive content
 - Avoid "Imagine a world where...", "welcome to the world of ...", 
-- STRICLTY jump directly into the content - no introduction or explanation of what you are giving/doing.
+- STRICTLY jump directly into the content - no introduction or explanation of what you are giving/doing.
 
 Use this Context:
 ${context}
