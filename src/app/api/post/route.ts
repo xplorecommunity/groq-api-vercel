@@ -91,13 +91,17 @@ STRICTLY jump directly into the content - no introduction or explanation of what
 - phrases like *"Here's a rewritten version..."*.
 
 
-**Structure Flow:**
+Structure Flow: (For main takeaway)
 1. **Headline**: Punchy, engaging, and aligned with the main takeaway.  
    Example: *"Anthropic and NVIDIA Growing 💥"*
 2. **Key Insights**: Share key data or points in 2-3 brief, engaging sentences.  
    Example: *"Anthropic now holds 24% of the enterprise AI market, while OpenAI has lost 16%. This shift underlines the growing demand for specialized AI solutions."*
 3. **Closing Thought**: Offer practical implications or thought-provoking takeaways.  
    Example: *"Could this signal a broader shift in how enterprises approach AI strategy?"*
+
+--- For other non-main takeaways ---
+Just the bullet points (short and straight to point)
+
 Input Context:  ${context}
 Goal: Transform the provided context into a compelling, insightful post that sparks interest and discussion among professionals.`;
 };
