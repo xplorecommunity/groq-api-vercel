@@ -30,7 +30,7 @@ Structure Flow:
 
 Style Requirements:
 - STRICLTY Keep the total response under 1000 characters
-- Tone: Warm and professional
+- Tone: Warm and informational
 - Language: Clear and straightforward
 - Format: Natural paragraphs with smooth transitions, short and crisp, idiomatic.
 - Keep your post brief and engaging. Aim for around 10 short paragraphs, each 1-2 lines long, to ensure easy readability.
@@ -50,6 +50,7 @@ Essential Guidelines:
 - End with meaningful takeaways
 - Skip meta-references about writing
 - Begin directly with substantive content
+- Avoid "Imagine a world where..."
 
 Input Context:
 ${context}
