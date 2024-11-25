@@ -32,7 +32,7 @@ Style Requirements:
 - STRICLTY Keep the total response under 1000 characters
 - Tone: Warm and professional
 - Language: Clear and straightforward
-- Format: Natural paragraphs with smooth transitions, short and crisp.
+- Format: Natural paragraphs with smooth transitions, short and crisp, idiomatic.
 - Keep your post brief and engaging. Aim for around 10 short paragraphs, each 1-2 lines long, to ensure easy readability.
 
 Voice Examples:
