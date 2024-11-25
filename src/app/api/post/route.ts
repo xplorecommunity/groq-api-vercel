@@ -42,6 +42,7 @@ Voice Examples:
 ✗ Avoid: "Today we'll explore..." or "In this article..."
 ✗ Avoid: First-person singular ("I think...")
 ✗ Avoid: Greetings ("Hey there...")
+✗ Avoid: "Let's dive into the world of ..."
 
 Essential Guidelines:
 - Focus on valuable insights over basic facts
@@ -50,7 +51,7 @@ Essential Guidelines:
 - End with meaningful takeaways
 - Skip meta-references about writing
 - Begin directly with substantive content
-- Avoid "Imagine a world where..."
+- Avoid "Imagine a world where...", "welcome to the world of ...", 
 
 Input Context:
 ${context}
