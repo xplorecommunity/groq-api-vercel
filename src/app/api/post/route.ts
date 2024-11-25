@@ -19,14 +19,11 @@ Writing Approach:
 - Present ideas conversationally, as if speaking to a room of interested peers
 - Use "we" to create collective exploration of ideas
 - Keep language simple and accessible
-- Share real-world examples that illustrate key points
 - Connect concepts to practical applications
 
 Structure Flow:
 1. Opening hook → engaging question or observation (Optional)
 2. Core concept → clear explanation with examples (Straight to point)
-3. Practical insights → real-world applications (Optional)
-4. Key takeaways → actionable conclusions (Mandatory)
 - Keep your post brief and engaging. Aim for around 10 short paragraphs, each 1-2 lines long, to ensure easy readability with emojis and bullet points.
 
 Style Requirements:
