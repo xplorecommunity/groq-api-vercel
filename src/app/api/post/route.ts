@@ -21,6 +21,7 @@ const PostGenerationPrompt = async (context: string) => {
      - Use short, punchy sentences, short paragraphs (separated by new lines)
      - Leverage numbered/bulleted insights
      - Embed rhetorical questions
+     - Embed justifying summary with numbers
      - Create tension and anticipation
   
   3. **Tone Mandates**:
@@ -30,7 +31,7 @@ const PostGenerationPrompt = async (context: string) => {
      - Maintain high-energy, motivational undertone
   
   4. **Structural Requirements**:
-     - Maximum 1000 characters
+     - Maximum 1500 characters
      - Include 3-4 key insights
      - End with a call-to-action or provocative question
      - Optional: Include personal credibility statement
