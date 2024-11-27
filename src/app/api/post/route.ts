@@ -5,96 +5,57 @@ import { config } from 'dotenv';
 config();
 
 
-const PostGenerationPrompt1 = async (context: string) => {
-  return `
-Transform this content into an engaging knowledge-sharing discussion that resonates with a broader audience.
-
-Context Transformation Guidelines:
-Start with attention-grabbing questions like:
-- "What makes certain technologies stand out in a crowded field?"
-- "Have you noticed patterns in successful system designs?"
-- "Why do some solutions scale better than others?"
-
-Writing Approach:
-- Present ideas conversationally, as if speaking to a room of interested peers
-- Use "we" to create collective exploration of ideas
-- Keep language simple and accessible
-- Share real-world examples that illustrate key points
-- Connect concepts to practical applications
-
-Structure Flow:
-1. Opening hook → engaging question or observation (Optional)
-2. Key Insights → Share key data or points in 2-3 brief, engaging sentences.
-3. Core concept → clear explanation with examples (Straight to point)
-4. Practical insights → real-world applications (Optional)
-- Keep your post brief and engaging. Aim for around 10 short paragraphs, each 1-2 lines long, to ensure easy readability with emojis and bullet points.
-
-Style Requirements:
-- STRICLTY Keep the total response under 1000 characters
-- Tone: Warm and informational
-- Language: Clear and straightforward, Idiomatic
-- Format: Natural paragraphs with smooth transitions, short and crisp, idiomatic.
-
-Voice Examples:
-✓ "Ever wondered why distributed systems are so challenging?"
-✓ "The beauty of modern databases lies in their simplicity"
-✓ "Looking at successful cloud architectures reveals a pattern"
-✗ Avoid: "Today we'll explore..." or "In this article..."
-✗ Avoid: First-person singular ("I think...")
-✗ Avoid: Greetings ("Hey there...")
-✗ Avoid: "Let's dive into the world of ..."
-
-Essential Guidelines:
-- Focus on valuable insights over basic facts
-- Build natural connections between ideas
-- Create relatable, practical examples
-- End with meaningful takeaways
-- Skip meta-references about writing
-- Begin directly with substantive content
-- Avoid "Imagine a world where...", "welcome to the world of ...", 
-- STRICTLY jump directly into the content - no introduction or explanation of what you are giving/doing.
-
-Use this Context:
-${context}
-
-The goal: Create engaging, insightful content that feels like knowledge shared among professionals.`;
-};
-
-
 const PostGenerationPrompt = async (context: string) => {
   return `
-Transform this content into an engaging, knowledge-sharing discussion that resonates with a broad audience while preserving essential details.
-**Transformation Guidelines:**
-1. **Engaging Start**: Open with a concise and intriguing hook or observation to draw in the reader. 
-2. **Core Content**: Present the key points in an accessible, conversational tone. Maintain focus on the main message without losing the richness of the details.  
-3. **Brevity with Depth**: Ensure the content feels full of insights without being overwhelming. Avoid overloading with unnecessary context or technical jargon. 
-4. **Relatable Takeaways**: Conclude with meaningful insights or questions to encourage reflection or discussion.  
+
+  Transform this Input Context into a punchy, narrative-driven post mimicking viral social media storytelling
   
-**Tone and Style:**
-- Tone: Professional yet conversational, striking a balance between informative and engaging.
-- Format: Short paragraphs or bullet points for readability.
-- Voice: Use collective pronouns ("we," "our") and avoid first-person singular or meta-references (e.g., "In this article, we’ll explore...").
-- Emojis: Use sparingly and only for emphasis or tone enhancement.  
-
-STRICTLY Jump give me post content - no introduction or explanation of what you are giving/doing
-
-**Avoid:**
-- Excessive commentary or lengthy introductions.
-- Greetings ("Hey there"), meta-statements, or first-person perspectives ("I think...").
-- Redundant details or overly technical jargon.
-- phrases like *"Here's a rewritten version..."*.
-
-
-Structure Flow: (For main takeaway)
-1. **Headline**: Punchy, engaging, and aligned with the main takeaway.  
-2. **Key Insights**: Share key data or points in 2-3 brief, engaging sentences.  
-3. **Closing Thought**: Offer practical implications or thought-provoking takeaways.  
-
---- For other non-main takeaways ---
-Just the bullet points (short and straight to point)
-
-Input Context:  ${context}
-Goal: Transform the provided context into a compelling, insightful post that sparks interest and discussion among professionals.`;
+  1. **Hook Creation**:
+     - Start with a bold, attention-grabbing statement
+     - Use dramatic, personal tone
+     - Hint at insider knowledge
+     - Leverage curiosity gap
+  
+  2. **Content Transformation Rules**:
+     - Write as if sharing a personal, high-stakes narrative
+     - Use short, punchy sentences, short paragraphs (separated by new lines)
+     - Leverage numbered/bulleted insights
+     - Embed rhetorical questions
+     - Create tension and anticipation
+  
+  3. **Tone Mandates**:
+     - Sound like an insider with exclusive information
+     - Use conversational, direct language
+     - Inject personal commentary
+     - Maintain high-energy, motivational undertone
+  
+  4. **Structural Requirements**:
+     - Maximum 1000 characters
+     - Include 3-4 key insights
+     - End with a call-to-action or provocative question
+     - Optional: Include personal credibility statement
+  
+  5. **Stylistic Signatures**:
+     - Use dramatized language
+     - Hint at "secret" or "little-known" information
+     - Create sense of urgency
+     - Imply transformative potential of shared knowledge
+  
+  STRICTLY Jump give me post content - no introduction or explanation of what you are giving/doing
+  
+  **Avoid:**
+  - Excessive commentary or lengthy introductions.
+  - Greetings ("Hey there"), meta-statements, or first-person perspectives ("I think...").
+  - Redundant details or overly technical jargon.
+  - phrases like *"Here's a rewritten version..."*.
+  
+  --- For other non-main takeaways ---
+  Just the bullet points (short and straight to point)
+  
+  Input Context:  ${context}
+  Goal: Transform the provided context into a compelling, insightful post that sparks interest and discussion among professionals. Cover all the points in the given context.
+  
+  `;
 };
 
 
