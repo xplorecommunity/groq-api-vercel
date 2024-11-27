@@ -51,7 +51,7 @@ Remember:
 - Ensure hooks align with content theme
 - STRICLTY Keep the total response under 1200 characters
 
-The goal is to create visual suggestions and discussion points that feel authentic and valuable to professionals.`;
+The goal is to create visual suggestions and discussion points that feel authentic and valuable to professionals. GIVE ME THE RESPONSE AS SHORT IN LENGTH AS POSSIBLE`;
 };
 const groq = process.env.GROQ_API_KEY ? new Groq({ apiKey: process.env.GROQ_API_KEY }) : null;
 
@@ -65,7 +65,7 @@ async function generateGroqResponse(content: string) {
   const prompt = await GenerateImageCommentPrompt(content);
   const completion = await groq.chat.completions.create({
     messages: [{ role: "user", content: prompt }],
-    model: "llama3-8b-8192",
+    model:"llama-3.1-8b-instant",
   });
   return completion.choices[0].message.content;
 }
