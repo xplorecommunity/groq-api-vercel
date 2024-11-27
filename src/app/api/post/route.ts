@@ -20,7 +20,7 @@ const PostGenerationPrompt = async (context: string) => {
      - Write as if sharing a personal, high-stakes narrative
      - Use short, punchy sentences, short paragraphs (separated by new lines)
      - Leverage numbered/bulleted insights
-     - Embed rhetorical questions
+     - Embed rhetorical phrases
      - Embed justifying summary with numbers
      - Create tension and anticipation
   
