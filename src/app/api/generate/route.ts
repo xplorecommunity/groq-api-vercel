@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     // Generate summary using Groq
     const chatCompletion = await groq.chat.completions.create({
       messages: [{ role: "user", content: generatePrompt(content) }],
-      model:"llama-3.1-8b-instant",
+      model: "llama3-8b-8192",
     });
 
     const summary = chatCompletion.choices[0].message.content;
