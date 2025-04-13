@@ -130,6 +130,7 @@ const NewsletterGenerationPrompt = async (context: string) => {
   -   Meta-statements ("Here's the newsletter...").
   -   Summaries that omit details from the original context.
   -   Content not derived directly from the input context.
+  -   Do not mention the source of the content and links, Just use the context to learn soemthing and write.
 
   **Input Context:** ${context}
 
@@ -156,7 +157,8 @@ async function generateGroqResponse(content: string): Promise<{ title: string; p
   try {
       const completion = await groq.chat.completions.create({
         messages: [{ role: "user", content: prompt }],
-        model: "llama-3.1-8b-instant", // Ensure this model supports JSON mode well
+        // model: "llama-3.1-8b-instant", // Ensure this model supports JSON mode well
+        model: "qwen-2.5-32b",
         temperature: 0.7,
         top_p: 1,
         // --- Use JSON mode ---
@@ -171,14 +173,34 @@ async function generateGroqResponse(content: string): Promise<{ title: string; p
           throw new Error("Received empty response content from Groq");
       }
 
+      // --- Clean potential markdown fences ---
+      let cleanedResponse = rawResponse.trim(); // Start by trimming whitespace
+
+      // Check for ```json prefix and remove it
+      if (cleanedResponse.startsWith("```json")) {
+          cleanedResponse = cleanedResponse.substring(7); // Length of "```json"
+      }
+      // Check for ``` prefix (if not ```json) and remove it
+      else if (cleanedResponse.startsWith("```")) {
+          cleanedResponse = cleanedResponse.substring(3); // Length of "```"
+      }
+
+      // Check for ``` suffix and remove it
+      if (cleanedResponse.endsWith("```")) {
+          cleanedResponse = cleanedResponse.substring(0, cleanedResponse.length - 3);
+      }
+
+      // Trim again in case slicing left whitespace
+      cleanedResponse = cleanedResponse.trim();
+
       // --- Parse and Validate JSON (Still Recommended as a Safeguard) ---
       let parsedJson: any;
       try {
-        parsedJson = JSON.parse(rawResponse);
+        parsedJson = JSON.parse(cleanedResponse);
       } catch (parseError) {
         console.error("Failed to parse Groq response as JSON:", parseError);
-        console.error("Raw response that failed parsing:", rawResponse);
-        throw new Error(`Groq response was not valid JSON despite requesting JSON mode. Response received: ${rawResponse}`);
+        console.error("Raw response that failed parsing:", cleanedResponse);
+        throw new Error(`Groq response was not valid JSON despite requesting JSON mode. Response received: ${cleanedResponse}`);
       }
 
       // Validate the structure
