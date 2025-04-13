@@ -103,7 +103,7 @@ const NewsletterGenerationPrompt = async (context: string) => {
   4.  **Structural Requirements (for postContent)**:
       * **No character limit.** The post content *must* be comprehensive enough to cover *all* details from the input context.
       * Ensure *all* key insights, details, supporting facts, nuances, and conclusions from the context are included and elaborated upon appropriately within the newsletter body. **Completeness is paramount.**
-      * Structure the content logically with clear paragraphs. Use subheadings (e.g., using markdown like **Subheading**) if it improves readability for longer content, but ensure the final output is a single string within the JSON.
+      * Structure the content logically with clear headings, paragraphs. Use subheadings (e.g., using markdown like **Subheading**) if it improves readability for longer content, but ensure the final output is a single string within the JSON.
       * End the newsletter body with a relevant call-to-action, a concluding thought, or a provocative question related to the content.
       * Optional: Include a credibility statement if it fits naturally (e.g., "From my analysis...", "Based on these findings...").
 
@@ -116,6 +116,7 @@ const NewsletterGenerationPrompt = async (context: string) => {
   6.  **Completeness Mandate (REINFORCED)**:
       * **Critically, ensure every single piece of information, detail, data point, nuance, and implication present in the Input Context is fully, accurately, and clearly represented in the generated newsletter body.**
       * **Do not omit, shorten, or gloss over *any* information.** The goal is exhaustive and faithful representation of the provided context in the specified style.
+      * **Do not mention** the source of the content or any other links related to sponsorers, Just use the context to learn soemthing and write. Dont mention anything about us or any sponsors at the end.
 
   7.  **Output Format**:
       * **Strictly provide the response *only* as a valid JSON object.** (Reinforced by API parameter)
@@ -131,7 +132,6 @@ const NewsletterGenerationPrompt = async (context: string) => {
   -   Summaries that omit details from the original context.
   -   Content not derived directly from the input context.
   -   Avoid greetings like "Happy Friday" or any other direct day-related greetings.
-  -   Do not mention the source of the content and links, Just use the context to learn soemthing and write.
 
   **Input Context:** ${context}
 
