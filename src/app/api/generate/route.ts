@@ -72,6 +72,71 @@ const PostGenerationPrompt = async (context: string) => {
   `;
 };
 
+// --- Updated Prompt Definition for Newsletter ---
+const NewsletterGenerationPrompt = async (context: string) => {
+  // Note: Instructions within the prompt remain crucial even with response_format,
+  // as they guide the *content* and *structure* of the JSON fields.
+  return `
+  Transform this Input Context into a compelling, narrative-driven **newsletter post**, outputting the result as a JSON object. The goal is deep, exhaustive coverage, not social media brevity.
+
+  **Instructions & Rules:**
+
+  1.  **Headline/Hook Creation**:
+      * Craft a compelling title suitable as a newsletter subject line or headline.
+      * Start the newsletter body (postContent) with a strong opening statement or hook that grabs the reader's attention.
+      * Use a tone that hints at valuable or exclusive insights.
+
+  2.  **Content Transformation Rules**:
+      * Write the newsletter body as a detailed, engaging narrative based *entirely* on the provided context.
+      * Use clear, engaging sentences and well-structured paragraphs (separated by new lines). Feel free to use longer sentences and paragraphs than typical social media posts, but ensure readability by breaking up long sections logically.
+      * Leverage numbered or bulleted lists for key takeaways, steps, or insights *within* the narrative flow where it enhances clarity.
+      * Embed rhetorical questions or phrases to keep the reader engaged.
+      * Include any justifying summaries, data, or numbers present in the context to add credibility.
+      * Build a logical flow, potentially creating interest or anticipation if the context supports it.
+
+  3.  **Tone Mandates**:
+      * Maintain the voice of an insider sharing valuable, perhaps exclusive, information.
+      * Use conversational yet informative and direct language suitable for a professional or interested audience.
+      * Inject personal commentary or perspective *only if it enhances the narrative and reflects the implied style*.
+      * Maintain an energetic, insightful, or motivational undertone as appropriate for the content.
+
+  4.  **Structural Requirements (for postContent)**:
+      * **No character limit.** The post content *must* be comprehensive enough to cover *all* details from the input context.
+      * Ensure *all* key insights, details, supporting facts, nuances, and conclusions from the context are included and elaborated upon appropriately within the newsletter body. **Completeness is paramount.**
+      * Structure the content logically with clear paragraphs. Use subheadings (e.g., using markdown like **Subheading**) if it improves readability for longer content, but ensure the final output is a single string within the JSON.
+      * End the newsletter body with a relevant call-to-action, a concluding thought, or a provocative question related to the content.
+      * Optional: Include a credibility statement if it fits naturally (e.g., "From my analysis...", "Based on these findings...").
+
+  5.  **Stylistic Signatures (for postContent)**:
+      * Use engaging and sometimes dramatized language where appropriate to make the information compelling.
+      * Hint at "behind-the-scenes" or "little-understood" aspects if supported by the context.
+      * Create a sense of importance or urgency if relevant to the topic.
+      * Imply the transformative potential or significance of the shared knowledge.
+
+  6.  **Completeness Mandate (REINFORCED)**:
+      * **Critically, ensure every single piece of information, detail, data point, nuance, and implication present in the Input Context is fully, accurately, and clearly represented in the generated newsletter body.**
+      * **Do not omit, shorten, or gloss over *any* information.** The goal is exhaustive and faithful representation of the provided context in the specified style.
+
+  7.  **Output Format**:
+      * **Strictly provide the response *only* as a valid JSON object.** (Reinforced by API parameter)
+      * The JSON object must have exactly two keys:
+          * `"title"`: A compelling title/subject line for the newsletter.
+          * `"postContent"`: The generated full newsletter body string, adhering to all the rules above.
+      * **Example JSON structure:** \`{"title": "Deep Dive: Unpacking the Latest Trends", "postContent": "Here begins the detailed narrative covering *all* points from the context... [potentially many paragraphs long] ...ending with a call to action."}\`
+      * **Do not include any introductory text, explanations, greetings, apologies, or anything outside the single JSON object.**
+
+  **Avoid (in the final JSON output):**
+  -   Any text before or after the JSON object.
+  -   Meta-statements ("Here's the newsletter...").
+  -   Summaries that omit details from the original context.
+  -   Content not derived directly from the input context.
+
+  **Input Context:** ${context}
+
+  **Goal:** Transform the provided context into a compelling, insightful, and **fully comprehensive** newsletter post, presented as a JSON object containing a title/subject and the detailed post content. The post content must completely and accurately represent *all* information from the input context, adhering to the specified narrative style, with no artificial length restrictions.
+  `;
+};
+
 // --- Groq Client Initialization ---
 const groq = process.env.GROQ_API_KEY ? new Groq({ apiKey: process.env.GROQ_API_KEY }) : null;
 if (!process.env.GROQ_API_KEY) {
@@ -84,7 +149,7 @@ async function generateGroqResponse(content: string): Promise<{ title: string; p
     throw new Error("GROQ client not initialized. Check GROQ_API_KEY environment variable.");
   }
 
-  const prompt = await PostGenerationPrompt(content);
+  const prompt = await NewsletterGenerationPrompt(content);
   // Optional: Log the prompt for debugging
   // console.log("Generated Prompt:", prompt);
 
