@@ -102,7 +102,8 @@ const NewsletterGenerationPrompt = async (context: string) => {
 
   4.  **Structural Requirements (for postContent)**:
       * **No character limit.** The post content *must* be comprehensive enough to cover *all* details from the input context.
-      * Ensure *all* key insights, details, supporting facts, nuances, and conclusions from the context are included and elaborated upon appropriately within the newsletter body. **Completeness is paramount.**
+      * If there is any PROMPOTIONAL CONTENT in the given context , Ignore that and **DO NOT MENTION** that anywhere in the newsletter content.
+      * Ensure *all* key insights, details, supporting facts, nuances, and conclusions from the context are included and elaborated upon appropriately within the newsletter body. **Completeness is paramount. EXCEPT PROMPOTIONAL CONTENT**
       * Structure the content logically with clear headings, paragraphs. Use subheadings (e.g., using markdown like **Subheading**) if it improves readability for longer content, but ensure the final output is a single string within the JSON.
       * End the newsletter body with a relevant call-to-action, a concluding thought, or a provocative question related to the content.
       * Optional: Include a credibility statement if it fits naturally (e.g., "From my analysis...", "Based on these findings...").
