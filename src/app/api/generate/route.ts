@@ -130,6 +130,7 @@ const NewsletterGenerationPrompt = async (context: string) => {
   -   Meta-statements ("Here's the newsletter...").
   -   Summaries that omit details from the original context.
   -   Content not derived directly from the input context.
+  -   Avoid greetings like "Happy Friday" or any other direct day-related greetings.
   -   Do not mention the source of the content and links, Just use the context to learn soemthing and write.
 
   **Input Context:** ${context}
