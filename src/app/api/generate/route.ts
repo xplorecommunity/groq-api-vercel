@@ -54,7 +54,7 @@ const PostGenerationPrompt = async (context: string) => {
       * The JSON object must have exactly two keys:
           * `"title"`: A compelling, short title for the post (less than 70 characters ideally).
           * `"postContent"`: The generated post string, adhering to all the rules above.
-      * **Example JSON structure:** \`{"title": "Example Title Here", "postContent": "The full generated post content adhering to all rules..."}\`
+      * **Example JSON structure:** {"title": "Example Title Here", "postContent": "The full generated post content adhering to all rules..."}
       * **Do not include any introductory text, explanations, greetings, apologies, or anything outside the single JSON object.**
 
   **Avoid (in the final JSON output):**
@@ -122,7 +122,7 @@ const NewsletterGenerationPrompt = async (context: string) => {
       * The JSON object must have exactly two keys:
           * `"title"`: A compelling title/subject line for the newsletter.
           * `"postContent"`: The generated full newsletter body string, adhering to all the rules above.
-      * **Example JSON structure:** \`{"title": "Deep Dive: Unpacking the Latest Trends", "postContent": "Here begins the detailed narrative covering *all* points from the context... [potentially many paragraphs long] ...ending with a call to action."}\`
+      * **Example JSON structure:** {"title": "Deep Dive: Unpacking the Latest Trends", "postContent": "Here begins the detailed narrative covering *all* points from the context... [potentially many paragraphs long] ...ending with a call to action."}
       * **Do not include any introductory text, explanations, greetings, apologies, or anything outside the single JSON object.**
 
   **Avoid (in the final JSON output):**
